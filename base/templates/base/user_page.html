@@ -1,0 +1,85 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container text-light">
+    <div class="row my-5">
+        <div class="col-3 card mx-5 bg-dark py-1">
+            <div class="card-body text-center">
+                <h2 class="mb-4">User</h2>
+                <p class="lead">Username: {{ user.username }}</p>
+                <p class="lead">Full Name: {{ customer.full_name }}</p>
+                <p class="lead">Phone Number: {{ customer.phone_number }}</p>
+                <p class="lead">Email: {{ customer.email }}</p>
+                <a href="#" class="lead text-decoration-none text-primary">Change Password</a>
+            </div>
+        </div>
+        <div class="col-7 card mx-4 bg-dark py-1">
+            <div class="card-body">
+                <h2 class="mb-4">Resources</h2>
+                <div class="card bg-dark px-4 py-2 mb-3 border-primary">
+                    <p class="h4">Room Info</p>
+                    {% if customer.is_active == True %}
+                    <p class="lead">Room Category: {{ room.category }}</p>
+                    <p class="lead">Room Number: {{ room.room_number }}</p>
+                        {% if room.status == 'b' %}
+                        <p class="lead">Room Status: Booked</p>
+                        {% else %}
+                        <p class="lead">Room Status: Occupied</p>
+                        {% endif %}
+                    {% else %}
+                    <p class="lead">No Room In Use</p>
+                    {% endif %}
+                </div>
+                <div class="card bg-dark px-4 py-2 mb-3 border-primary">
+                    <p class="h4">Gym Info</p>
+                    {% if customer.gym_status == True %}
+                        {% if gym_user.membership_group == 'd' %}
+                        <p class="lead">Membership Group: Diamond</p>
+                        {% elif gym_user.membership_group == 'p' %}
+                        <p class="lead">Membership Group: Platinum</p>
+                        {% else %}
+                        <p class="lead">Membership Group: Gold</p>
+                        {% endif %}
+
+                        {% if gym_user.trainer == 't' %}
+                        <p class="lead">Trainer: Trent</p>
+                        {% elif gym_user.trainer == 'm' %}
+                        <p class="lead">Trainer: Mandy</p>
+                        {% elif gym_user.trainer == 'j' %}
+                        <p class="lead">Trainer: Jake</p>
+                        {% elif gym_user.trainer == 'b' %}
+                        <p class="lead">Trainer: Brad</p>
+                        {% else %}
+                        <p class="lead">Trainer: Erika</p>
+                        {% endif %}
+                        
+                        {% if gym_user.subscription == 'y' %}
+                        <p class="lead">Subscription: Yearly</p>
+                        {% elif gym_user.subscription == 'm' %}
+                        <p class="lead">Subscription: Monthly</p>
+                        {% else %}
+                        <p class="lead">Subscription: Weekly</p>
+                        {% endif %}
+
+                    <p class="lead">Start Date: {{ gym_user.start_date }}</p>
+                    <p class="lead">End Date: TBD</p>
+                    {% else %}
+                    <p class="lead">No Gym Subscription</p>
+                    {% endif %}
+                </div>
+                <div class="card bg-dark px-4 py-2 border-primary">
+                    <p class="h4">Hall Info</p>
+                    {% if customer.hall_status == True %}
+                    <p class="lead">Booked Hall: {{ hall_book.hall }}</p>
+                    <p class="lead">Book Date: {{ hall_book.book_date }}</p>
+                    {% else %}
+                    <p class="lead">No Hall Booked</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

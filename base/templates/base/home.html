@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="bg-primary text-center">
+    <div class="py-5">
+        <h1 class="mb-5 text-dark">Rooms</h1>
+        <a class="text-decoration-none text-light" href="{% url 'room_page' %}">Book Room</a>
+    </div>
+</section>
+
+<section class="bg-light text-center">
+    <div class="py-5">
+        <h1 class="mb-5 text-primary">Halls</h1>
+        <!-- <a class="text-decoration-none text-dark" href="#">Book Hall</a> -->
+    </div>
+</section>
+
+<section class="bg-dark text-center">
+    <div class="py-5">
+        <h1 class="mb-5 text-light">Gym</h1>
+        <a class="text-decoration-none text-primary" href="{% url 'gym_page' %}">Register Gym</a>
+    </div>
+</section>
+
+<section class="bg-primary text-center">
+    <div class="py-5">
+        <h1 class="my-5 text-dark">Kitchen</h1>
+        <!-- <a class="text-decoration-none text-light" href="{% url 'gym_page' %}">Order</a> -->
+    </div>
+</section>
+
+<section class="text-center">
+    <div class="py-5">
+        <h1 class="my-5 text-primary">Staff</h1>
+    </div>
+</section>
+
+{% endblock content %}

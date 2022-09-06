@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="bg-primary py-4">
+    <div class="container ">
+        <form action="" method="GET" class="text-center lead">
+            <input type="hidden" name="category_selector" value="category">
+            <label class="text-light" for="">Select Room Category</label>
+            <select name="room_cat" id="cat">
+                <option value="Deluxe">Deluxe</option>
+                <option value="Standard">Standard</option>
+                <option value="Suite">Suite</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit" class="btn bg-secondary mt-3 text-light bg-dark">
+        </form>
+        {% if book == True %}
+        <p class="h3 text-center mt-3 text-success">{{ room }} Booked</p>
+        <p class="lead text-center text-light">Click <a href="{% url 'home_page' %}" class="text-decoration-none text-dark">here</a> to return to home page</p>
+        {% endif %}
+        <p class="h3 text-center mt-3 text-dark">{{ msg }}</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row row-cols-3 gx-5">
+            {% for room in rooms %}
+            <form action="" method="GET">
+                <div class="card col text-center my-3 py-3 bg-dark">
+                    <div class="card-body">
+                        <input type="hidden" name="book_room" value="book">
+                        <label class="lead text-white mb-5">{{ room }}</label>
+                        <input type="hidden" value="{{ room }}" name="room">
+                        <br>
+                        <input type="submit" value="Book Room" class="btn bg-primary text-light">
+                    </div>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

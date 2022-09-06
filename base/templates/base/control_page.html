@@ -1,0 +1,425 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="bg-dark pb-5">
+    <!-- Off Canvas -->
+    <div class=" container py-3">
+        <button class="btn btn-primary mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddUser" aria-controls="offcanvasAddUser">
+            Add User
+        </button>
+        <button class="btn btn-light text-primary mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookRoom" aria-controls="offcanvasBookRoom">
+            Get Room
+        </button>
+        <button class="btn btn-primary mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookHall" aria-controls="offcanvasBookHall">
+            Get Hall
+        </button>
+        <button class="btn btn-light text-primary mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasGymReg" aria-controls="offcanvasGymReg">
+            Register Gym
+        </button>
+        
+        <!-- Add User -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasAddUser" aria-labelledby="offcanvasAddUserLabel">
+            <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasAddUserLabel">Add User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form action="" method="POST" class="card w-100 lead text-center text-light bg-dark mt-3">
+                    {% csrf_token %}
+                    <div class="card-body p-4">
+                        <input type="hidden" value="add_user" name="check1">
+                        <label>Full Name</label>
+                        <br>
+                        <input type="text" name="fullname">
+                        <br>
+                        <label class="mt-3">Phone Number</label>
+                        <br>
+                        <input type="text" name="phone">
+                        <br>
+                        <label class="mt-3">Username</label>
+                        <br>
+                        {{ user_form.username }}
+                        <br>
+                        <label class="mt-3">Email</label>
+                        <br>
+                        {{ user_form.email }}
+                        <br>
+                        <label class="mt-3">Password</label>
+                        <br>
+                        {{ user_form.password1 }}
+                        <br>
+                        <label class="mt-3">Confirm Password</label>
+                        <br>
+                        {{ user_form.password2 }}
+                        <br>
+                        <input type="submit" value="Register" class="btn bg-primary text-light mt-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Book Room -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBookRoom" aria-labelledby="offcanvasBookRoomLabel">
+            <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBookRoomLabel">Get Room</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            <div>
+                <form action="" method="POST" class="card w-100 lead text-center text-light bg-dark mt-3">
+                    {% csrf_token %}
+                    <div class="p-3 card-body">
+                        <input type="hidden" value="book_room" name="check2">
+                        <label class="mt-3">Username</label>
+                        <br>
+                        <input type="text" name="username" class="w-100">
+                        <br>
+                        <label class="mt-3">Room Category</label>
+                        <br>
+                        <select name="room_cat" class="px-2 w-100">
+                            <option value="Deluxe">Deluxe</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Suite">Suite</option>
+                        </select>
+                        <br>
+                        <label class="mt-3">Room Number</label>
+                        <br>
+                        <input type="text" name="room_no" class="w-100">
+                        <br>
+                        <label class="mt-3">Action</label>
+                        <br>
+                        <select name="action" class="px-2 w-100">
+                            <option value="o">Check In</option>
+                            <option value="b">Book</option>
+                        </select>
+                        <br>
+                        <label class="mt-3">Check in Date</label>
+                        <br>
+                        <input type="date" name="check_in_date" class="w-100">
+                        <br>
+                        <label class="mt-3">Book Date</label>
+                        <br>
+                        <input type="date" name="book_date" class="w-100">
+                        <br>
+                        <input type="submit" value="Book Room" class="btn bg-primary text-light mt-4">
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Book Hall -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBookHall" aria-labelledby="offcanvasBookHallLabel">
+            <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBookHallLabel">Get Hall</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            <div>
+                <form action="" method="POST" class="card w-100 lead text-center text-light bg-dark mt-5">
+                    {% csrf_token %}
+                    <div class="p-3 card-body">
+                        <input type="hidden" value="book_hall" name="check3">
+                        <label class="lead mt-3">Hall</label>
+                        <br>
+                        <select name="hall" class="lead w-100">
+                            <option value="Small Hall">Small Hall</option>
+                            <option value="Medium Hall">Medium Hall</option>
+                            <option value="Large Hall">Large Hall</option>
+                        </select>
+                        <br>
+                        <label class="lead mt-3">Username</label>
+                        <br>
+                        <input type="text" name="username" class="lead w-100">
+                        <br>
+                        <label class="lead mt-3">Book Date</label>
+                        <br>
+                        <input type="date" name="date" class="lead w-100">
+                        <br>
+                        <input type="submit" value="Book" class="btn bg-primary mt-4 text-light">
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Register Gym -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasGymReg" aria-labelledby="offcanvasGymRegLabel">
+            <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasGymRegLabel">Gym Registration</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            <div>
+                <form action="" method="POST" class="card w-100 lead text-center text-light bg-dark mt-5">
+                    {% csrf_token %}
+                    <div class="p-3 card-body">
+                        <input type="hidden" value="reg_gym" name="check4">
+                        <label class="mt-3">Username</label>
+                        <br>
+                        <input type="text" name="username" class="w-100">
+                        <br>
+                        <label class="mt-3">Membership Group</label>
+                        <br>
+                        <select name="mem_grp" class="px-2 w-100">
+                            <option value="d">Diamond</option>
+                            <option value="p">Platinum</option>
+                            <option value="g">Gold</option>
+                        </select>
+                        <br>
+                        <label class="mt-3">Subscription Duration</label>
+                        <br>
+                        <select name="sub_duration" class="px-2 w-100">
+                            <option value="y">Year</option>
+                            <option value="m">Month</option>
+                            <option value="w">Week</option>
+                        </select>
+                        <br>
+                        <label class="mt-3">Trainer</label>
+                        <br>
+                        <select name="trainer" class="px-2 w-100">
+                            <option value="t">Trent</option>
+                            <option value="m">Mandy</option>
+                            <option value="j">Jake</option>
+                            <option value="b">Brad</option>
+                            <option value="e">Erika</option>
+                        </select>
+                        <br>
+                        <label class="mt-3">Start Date</label>
+                        <br>
+                        <input type="date" name="start_date" class="w-100">
+                        <br>
+                        <input type="submit" value="Register" class="btn bg-primary text-light mt-4">
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-light py-2">
+        <!-- Tabs -->
+        <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="rooms-tab" data-bs-toggle="tab" data-bs-target="#rooms-tab-pane" type="button" role="tab" aria-controls="rooms-tab-pane" aria-selected="false">Rooms</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                <button class="nav-link" id="customers-tab" data-bs-toggle="tab" data-bs-target="#customers-tab-pane" type="button" role="tab" aria-controls="customers-tab-pane" aria-selected="true">Customers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                <button class="nav-link" id="halls-tab" data-bs-toggle="tab" data-bs-target="#halls-tab-pane" type="button" role="tab" aria-controls="halls-tab-pane" aria-selected="false">Halls</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                <button class="nav-link" id="gym-tab" data-bs-toggle="tab" data-bs-target="#gym-tab-pane" type="button" role="tab" aria-controls="gym-tab-pane" aria-selected="false">Gym</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- Rooms -->
+                <div class="tab-pane fade show active" id="rooms-tab-pane" role="tabpanel" aria-labelledby="rooms-tab" tabindex="0">
+                    <table class="table table-striped text-center mt-2">
+                        <tr>
+                            <th>Room Number</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Occupant</th>
+                            <th></th>
+                        </tr>
+                        {% for room in rooms %}
+                        <tr class="lead">
+                            <td>{{ room.room_number }}</td>
+                            <td>{{ room.category }}</td>
+
+                            {% if room.status == 'v' %}
+                            <td>Vacant</td>
+                            {% endif %}
+                            {% if room.status == 'b' %}
+                            <td class="text-warning">Booked</td>
+                            {% endif %}
+                            {% if room.status == 'o' %}
+                            <td class="text-danger">Occupied</td>
+                            {% endif %}
+                            
+                            {% if room.occupant == admin %}
+                            <td>-</td>
+                            {% else %}
+                            <td>
+                                <a href="{% url 'user_page2' room.occupant %}" class="text-decoration-none">{{ room.occupant }}</a>
+                            </td>
+                            {% endif %}
+                            {% if room.status == 'b' %}
+                            <td>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item p-0 m-0">
+                                        <h class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed p-2" type="button" data-bs-toggle="collapse" data-bs-target="#{{ room }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Checkin
+                                            </button>
+                                        </h>
+                                        <div id="{{ room }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body p-0 m-0 bg-danger">
+                                                <a href="{% url 'checkin' room.occupant %}" class="text-light text-decoration-none h6">Checkin {{ room.room_number }}</a>
+                                            </div>
+                                        </div>
+                                    </div>                
+                                </div>
+                            </td>
+                            {% else %}
+                            <td>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item p-0 m-0">
+                                        <h class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed p-2" type="button" data-bs-toggle="collapse" data-bs-target="#{{ room }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Checkout
+                                            </button>
+                                        </h>
+                                        <div id="{{ room }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body p-0 m-0 bg-danger">
+                                                <a href="{% url 'checkout' room.room_number %}" class="text-light text-decoration-none h6">Checkout {{ room.room_number }}</a>
+                                            </div>
+                                        </div>
+                                    </div>                
+                                </div>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table> 
+                </div>
+
+                <!-- Customers -->
+                <div class="tab-pane fade" id="customers-tab-pane" role="tabpanel" aria-labelledby="customers-tab" tabindex="0">
+                    <table class="table table-striped text-center mt-2">
+                        <tr>
+                            <th>Full name</th>
+                            <th>Phone No.</th>
+                            <th>Email</th>
+                            <th>Room</th>
+                            <th>Hall</th>
+                            <th>Room Status</th>
+                            <th>Gym Status</th>
+                        </tr>
+
+                        {% for customer in customers %}
+                        <tr class="lead">
+                            <td>
+                                <a href="{% url 'user_page2' customer.full_name %}" class="text-decoration-none">{{ customer.full_name }}</a>
+                            </td>
+                            <td>{{ customer.phone_number }}</td>
+                            <td>{{ customer.email }}</td>
+                            {% if customer.room == room_001 %}
+                            <td>-</td>
+                            {% else %}
+                            <td>{{ customer.room }}</td>
+                            {% endif %}
+                            {% if customer.hall == hall_0 %}
+                            <td>-</td>
+                            {% else %}
+                            <td>{{ customer.hall }}</td>
+                            {% endif %}
+                            {% if customer.is_active == True %}
+                            <td>Active</td>
+                            {% else %}
+                            <td>Not active</td>
+                            {% endif %}
+                            {% if customer.gym_status == True %}
+                            <td>Active</td>
+                            {% else %}
+                            <td>Not active</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <!-- Halls -->
+                <div class="tab-pane fade" id="halls-tab-pane" role="tabpanel" aria-labelledby="halls-tab" tabindex="0">
+                    <div class="row mx-1 mt-2">
+                        <table class="table table-striped col">
+                            <tr>
+                                <th>Small Hall</th>
+                            </tr>
+                            {% for book in shall_books %}
+                            <tr>
+                                <td class="lead">{{ book.book_date }}: <a href="{% url 'user_page2' book.customer %}" class="text-decoration-none">{{ book.customer }}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <table class="table table-striped col">
+                            <tr>
+                                <th>Medium Hall</th>
+                            </tr>
+                            {% for book in mhall_books %}
+                            <tr>
+                                <td class="lead">{{ book.book_date }}: <a href="{% url 'user_page2' book.customer %}" class="text-decoration-none">{{ book.customer }}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <table class="table table-striped col">
+                            <tr>
+                                <th>Large Hall</th>
+                            </tr>
+                            {% for book in lhall_books %}
+                            <tr>
+                                <td class="lead">{{ book.book_date }}: <a href="{% url 'user_page2' book.customer %}" class="text-decoration-none">{{ book.customer }}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Gym -->
+                <div class="tab-pane fade" id="gym-tab-pane" role="tabpanel" aria-labelledby="gym-tab" tabindex="0">
+                    <table class="table table-striped text-center mt-2">
+                        <tr>
+                            <th>Full name</th>
+                            <th>Membership Group</th>
+                            <th>Subscription</th>
+                            <th>Trainer</th>
+                            <th>Start Date</th>
+                        </tr>
+                    {% for user in gym_users %}
+                        <tr class="lead">
+                            <td>
+                                <a href="{% url 'user_page2' user.customer %}" class="text-decoration-none">{{ user.customer }}</a>
+                            </td>
+                            {% if user.membership_group == 'd' %} 
+                            <td>Diamond</td>
+                            {% elif user.membership_group == 'p' %} 
+                            <td>Platinum</td>
+                            {% else %} 
+                            <td>Gold</td>
+                            {% endif %}
+
+                            {% if user.subscription == 'y' %} 
+                            <td>Yearly</td>
+                            {% elif user.subscription == 'm' %} 
+                            <td>Monthly</td>
+                            {% else %} 
+                            <td>Weekly</td>
+                            {% endif %}
+                            
+                            {% if user.trainer == 't' %} 
+                            <td>Trent</td>
+                            {% elif user.trainer == 'm' %} 
+                            <td>Mandy</td>
+                            {% elif user.trainer == 'j' %} 
+                            <td>Jake</td>
+                            {% elif user.trainer == 'b' %} 
+                            <td>Brad</td>
+                            {% else %} 
+                            <td>Erika</td>
+                            {% endif %}
+                            
+                            <td>{{ user.start_date }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock content %}

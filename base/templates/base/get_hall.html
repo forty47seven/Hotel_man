@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section class="p-5">
+    <div class="container position-absolute top-50 start-50 translate-middle">
+        <div class="row text-center gy-3">
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center">
+                        <h3 class="card-title mt-3 mb-4">Small Hall</h3>
+                        <p class="card-text mb-1">
+                            Price:
+                        </p>
+                        <p class="card-text mb-4">
+                            N 50,000
+                        </p>
+                        {% if sm_hall_status == 'v' %}
+                        <a class="btn btn-md bg-primary text-light" href="{% url 'book_sm_hall' %}">Book Hall</a>
+                        {% else %}
+                        <a href="#" class="btn btn-md bg-primary text-light">Check Free Dates</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg-secondary text-light">
+                    <div class="card-body text-center">
+                        <h3 class="card-title mt-3 mb-4">Medium Hall</h3>
+                        <p class="card-text mb-1">
+                            Price:
+                        </p>
+                        <p class="card-text mb-4">
+                            N 75,000
+                        </p>
+                        {% if md_hall_status == 'v' %}
+                        <a class="btn btn-md bg-dark text-light" href="{% url 'book_md_hall' %}">Book Hall</a>
+                        {% else %}
+                        <a href="#" class="btn btn-md bg-dark text-light">Check Free Dates</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center">
+                        <h3 class="card-title mt-3 mb-4">large Hall</h3>
+                        <p class="card-text mb-1">
+                            Price:
+                        </p>
+                        <p class="card-text mb-4">
+                            N 100,000
+                        </p>
+                        {% if lg_hall_status == 'v' %}
+                        <a class="btn btn-md bg-primary text-light" href="{% url 'book_lg_hall' %}">Book Hall</a>
+                        {% else %}
+                        <a href="#" class="btn btn-md bg-primary text-light">Check Free Dates</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
